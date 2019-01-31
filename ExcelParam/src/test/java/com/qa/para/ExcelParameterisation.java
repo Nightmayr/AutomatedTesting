@@ -13,11 +13,14 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.qa.param.AddUserPage;
@@ -60,7 +63,16 @@ public class ExcelParameterisation {
 		this.rowNum = rowNum;
 	}
 	
+	@Before
+	public void setup() {
+		System.setProperty("webdriver.chrome.driver", Constants.DRIVER);
+		driver = new ChromeDriver();
+	}
 	
+	@After
+	public void teardown() {
+		driver.quit();
+	}
 	
 	
 	@Test
